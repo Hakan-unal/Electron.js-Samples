@@ -1,5 +1,5 @@
 {
-  "name": "electron.js",
+  "name": "sample-1",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
@@ -9,6 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "electron": "^8.2.5"
+    "electron": "^9.1.0"
   }
 }
