@@ -1,9 +1,9 @@
 const electron = require("electron");
 const url = require("url");
 const path = require("path");
-const { Menu } = require("electron");
 
-const { app, BrowserWindow, ipcMain } = electron;
+
+const { app, BrowserWindow, ipcMain, Menu } = electron;
 
 let mainWindow;
 
@@ -13,7 +13,7 @@ app.on("ready", () => {
     console.log(process.platform)
     mainWindow.loadURL(
         url.format({
-            pathname: path.join(__dirname, "index.html"),
+            pathname: path.join(__dirname, "main.html"),
             protocol: "file:",
             slashes: true
         })
@@ -22,17 +22,20 @@ app.on("ready", () => {
     const navbarMenu = Menu.buildFromTemplate(navbarMenuTemplate);
     Menu.setApplicationMenu(navbarMenu)
 
-    ipcMain.on("key", (err, data) => {
-        if (err) {
-            console.log(err)
-        } else {
-            console.log(data)
-            console.log("Merhaba")
-        }
-    })
-
+   
 })
 
+ipcMain.on("key", (err, data) => {
+    if (err) {
+        console.log(err)
+    } else if (data) {
+        console.log(data)
+    } else {
+        console.log("Empty")
+
+    }
+})
+console.log("merhaba")
 const navbarMenuTemplate = [
     {
         label: "Dosya",
