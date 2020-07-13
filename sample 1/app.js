@@ -3,7 +3,7 @@ const url = require("url");
 const path = require("path");
 const { Menu } = require("electron");
 
-const { app, BrowserWindow } = electron;
+const { app, BrowserWindow, ipcMain } = electron;
 
 let mainWindow;
 
@@ -20,8 +20,17 @@ app.on("ready", () => {
     )
 
     const navbarMenu = Menu.buildFromTemplate(navbarMenuTemplate);
-
     Menu.setApplicationMenu(navbarMenu)
+
+    ipcMain.on("key", (err, data) => {
+        if (err) {
+            console.log(err)
+        } else {
+            console.log(data)
+            console.log("Merhaba")
+        }
+    })
+
 })
 
 const navbarMenuTemplate = [
