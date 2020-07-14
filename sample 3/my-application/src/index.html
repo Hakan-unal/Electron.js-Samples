@@ -10,19 +10,13 @@
 <body>
   <h1>💖 Hello World!</h1>
   <p>Welcome to your Electron application.</p>
+  <p>Bulunduğunuz konum:
+  <h3 id="location">Adana</h3>
+  </p>
   <button id="button">Send</button>
 
 
-  <script>
-    const electron = require('electron');
-    const { ipcRenderer } = electron;
-    const button = document.querySelector("#button");
-
-    button.addEventListener("click", () => {
-      console.log("Button worked");
-    })
-
-  </script>
+  <script src="scripts/location.js"></script>
 </body>
 
 </html>
