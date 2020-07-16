@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
 const url = require("url");
+const { on } = require('process');
 
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -20,12 +21,12 @@ const createWindow = () => {
 
   });
 
-  
+
   // and load the index.html of the app. 
   // Aşağıdaki ile aynı yöntem
 
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
-  
+
 
   // Yukarıdaki ile aynı yöntem
   /*
@@ -42,7 +43,25 @@ const createWindow = () => {
 
   Menu.setApplicationMenu(mainMenu);
 
+  mainWindow.on("close", () => {
+    app.quit();
+  })
+
 };
+
+
+const openNewWindow = (item) => {
+  addWindow = new BrowserWindow({
+    width: 480,
+    height: 250,
+    title: item
+  });
+  addWindow.loadFile(path.join(__dirname, 'newTab.html'));
+
+  addWindow.on("close", () => {
+    addWindow = null;
+  })
+}
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
@@ -78,17 +97,6 @@ app.on('activate', () => {
 const mainMenuTemplate = [
   { label: "File" },
   {
-    label: "Settings",
-    submenu: [
-      { label: "Giriş" },
-      { label: "Test" },
-      {
-        label: "Çıkış",
-        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
-        click() { app.quit() }
-      }
-    ]
-  }, {
     label: "Developer Tools",
     submenu: [
       {
@@ -99,6 +107,18 @@ const mainMenuTemplate = [
         }
       }
     ]
+  },
+  {
+    label: "Settings",
+    submenu: [
+      { label: "Giriş" },
+      { label: "Test" },
+      {
+        label: "Çıkış",
+        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
+        click() { app.quit() }
+      }
+    ]
   }
 
 ]
@@ -106,10 +126,10 @@ const mainMenuTemplate = [
 
 // Event Tetiklenmeleri aşağıda yakalanıyor
 
-ipcMain.on("button:click", (item) => {
+ipcMain.on("button:click", (err, item) => {
   console.log("button:click event'i tetiklendi")
 })
 
-ipcMain.on("openNewTab:click", () => {
-  console.log("open New Tab")
+ipcMain.on("openNewTab:click", (err, item) => {
+  openNewWindow(item);
 })

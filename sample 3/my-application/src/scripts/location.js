@@ -12,8 +12,8 @@ let listArray = [];
 const itemAddToList = (item) => {
     listArray.push(item);
     let li = document.createElement("li");
-    li.setAttribute("class", "list-group-item");
-    li.innerText = `${listArray.length}. ${item}`;
+    li.setAttribute("class", "list-group-item list-group-item-action");
+    li.innerHTML = `<b>${listArray.length}.</b> ${item}`;
     list.appendChild(li);
 }
 
@@ -32,7 +32,8 @@ button.addEventListener("click", (event) => {
 })
 
 openNewTabButton.addEventListener("click", () => {
-    ipcRenderer.send("openNewTab:click");
+    ipcRenderer.send("openNewTab:click", inputBox.value);
+    console.log(inputBox.value)
 
 })
 
