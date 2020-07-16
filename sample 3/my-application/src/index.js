@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
@@ -14,6 +14,8 @@ const createWindow = () => {
     webPreferences: {
       nodeIntegration: true
     }
+
+
   });
 
   // and load the index.html of the app.
@@ -21,6 +23,13 @@ const createWindow = () => {
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
+
+
+  // Template üzerinden menu uygulamaya burada import ediliyor
+  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+
+  Menu.setApplicationMenu(mainMenu);
+
 };
 
 // This method will be called when Electron has finished
@@ -52,10 +61,28 @@ app.on('activate', () => {
 
 
 
+// Menu template'i  burada oluşturuluyor
+
+const mainMenuTemplate = [
+  { label: "File" },
+  {
+    label: "Setting",
+    submenu: [
+      { label: "Giriş" },
+      { label: "Test" },
+      {
+        label: "Çıkış",
+        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
+        click() { app.quit() }
+      }
+    ]
+  },
+
+]
+
 
 // Event Tetiklenmeleri aşağıda yakalanıyor
 
 ipcMain.on("button:click", (err, item) => {
-  console.log(item);
 
 })

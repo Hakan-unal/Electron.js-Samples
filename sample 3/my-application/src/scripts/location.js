@@ -11,7 +11,7 @@ const itemAddToList = (item) => {
     listArray.push(item);
     let li = document.createElement("li");
     li.setAttribute("class", "list-group-item");
-    li.innerText = item;
+    li.innerText = `${listArray.length}. ${item}`;
     list.appendChild(li);
 }
 
@@ -30,3 +30,8 @@ button.addEventListener("click", (event) => {
 })
 
 clearButton.addEventListener("click", clearList);
+
+
+
+
+
