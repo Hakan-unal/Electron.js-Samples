@@ -30,8 +30,3 @@ button.addEventListener("click", (event) => {
 })
 
 clearButton.addEventListener("click", clearList);
-
-
-
-
-

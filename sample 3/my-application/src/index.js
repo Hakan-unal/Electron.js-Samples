@@ -84,5 +84,5 @@ const mainMenuTemplate = [
 // Event Tetiklenmeleri aşağıda yakalanıyor
 
 ipcMain.on("button:click", (err, item) => {
-
+console.log("button:click event'i tetiklendi")
 })
