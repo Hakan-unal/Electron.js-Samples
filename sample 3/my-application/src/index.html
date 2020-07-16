@@ -14,14 +14,21 @@
 
   <div class="container">
     <p class="h1 text-center">💖 Hello World!</p>
-    <p class="h4 text-center">Welcome to my Electron application. Lorem ipsum dolor sit amet consectetur adipisicing
-      elit. Excepturi placeat at non corporis, vel iure voluptates quasi vero laborum eum, sed qui alias dolor
-      exercitationem aliquid eaque sequi neque numquam?</p>
+    <p class="h4 text-center">Welcome to my Electron application.</p>
 
-    <input class="form-control" id="inputBox" type="text">
-    <button class="btn btn-outline-dark my-2" id="button">Send</button>
-    <button class="btn btn-outline-dark my-2" id="clearButton">Clear</button>
-    <button class="btn btn-outline-dark btn-block" id="openNewTabButton">Yeni Ekran Aç</button>
+    <input class="form-control my-2 form-control-lg" id="inputBox" type="text" placeholder="Please enter a newtab title">
+    <div class="row">
+
+      <div class="col-6">
+        <button class="btn btn-outline-dark btn-block btn-lg" id="button">Send</button>
+      </div>
+
+      <div class="col-6">
+        <button class="btn btn-outline-dark btn-block btn-lg" id="clearButton">Clear</button>
+      </div>
+
+    </div>
+    <button class="btn btn-outline-dark btn-block btn-lg my-2" id="openNewTabButton">Yeni Ekran Aç</button>
 
   </div>
 
@@ -32,7 +39,7 @@
 
 
   <!-- Aşağıdaki yöntemler birbiri ile aynı-->
-  
+
   <!--  <script src="scripts/location.js"></script> -->
 
   <script>

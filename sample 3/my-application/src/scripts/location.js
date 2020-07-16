@@ -25,7 +25,6 @@ const clearList = () => {
 
 button.addEventListener("click", (event) => {
     event.preventDefault();
-    console.log(inputBox.value)
     ipcRenderer.send("button:click", inputBox.value);
     itemAddToList(inputBox.value);
     inputBox.value = "";
@@ -33,7 +32,6 @@ button.addEventListener("click", (event) => {
 
 openNewTabButton.addEventListener("click", () => {
     ipcRenderer.send("openNewTab:click", inputBox.value);
-    console.log(inputBox.value)
 
 })
 

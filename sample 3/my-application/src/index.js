@@ -13,8 +13,8 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 650,
-    height: 450,
+    width: 750,
+    height: 500,
     webPreferences: {
       nodeIntegration: true
     }
@@ -54,7 +54,7 @@ const createWindow = () => {
 const openNewWindow = (item) => {
   addWindow = new BrowserWindow({
     width: 550,
-    height: 225,
+    height: 250,
     webPreferences: {
       nodeIntegration: true
     },
@@ -131,7 +131,7 @@ const mainMenuTemplate = [
 // Event Tetiklenmeleri aşağıda yakalanıyor
 
 ipcMain.on("button:click", (err, item) => {
-  console.log("button:click event'i tetiklendi")
+  console.log(item);
 })
 
 ipcMain.on("openNewTab:click", (err, item) => {
