@@ -2,6 +2,8 @@ const button = document.querySelector("#button");
 const inputBox = document.querySelector("#inputBox");
 const list = document.querySelector("#list");
 const clearButton = document.querySelector("#clearButton");
+const openNewTabButton = document.querySelector("#openNewTabButton");
+
 
 const electron = require("electron");
 const { ipcRenderer } = electron;
@@ -27,6 +29,12 @@ button.addEventListener("click", (event) => {
     ipcRenderer.send("button:click", inputBox.value);
     itemAddToList(inputBox.value);
     inputBox.value = "";
+})
+
+openNewTabButton.addEventListener("click", (event) => {
+    ipcRenderer.send("openNewTab:click");
+
+    event.preventDefault();
 })
 
 clearButton.addEventListener("click", clearList);

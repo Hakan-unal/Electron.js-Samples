@@ -21,8 +21,7 @@ const createWindow = () => {
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
-  // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+
 
 
   // Template üzerinden menu uygulamaya burada import ediliyor
@@ -66,7 +65,7 @@ app.on('activate', () => {
 const mainMenuTemplate = [
   { label: "File" },
   {
-    label: "Setting",
+    label: "Settings",
     submenu: [
       { label: "Giriş" },
       { label: "Test" },
@@ -76,7 +75,18 @@ const mainMenuTemplate = [
         click() { app.quit() }
       }
     ]
-  },
+  }, {
+    label: "Developer Tools",
+    submenu: [
+      {
+        label: "Dev Tools",
+        accelerator: process.platform == 'darwin' ? 'Command+I' : 'Ctrl+I',
+        click(item, focusedWindow) {
+          focusedWindow.toggleDevTools();
+        }
+      }
+    ]
+  }
 
 ]
 
@@ -84,5 +94,9 @@ const mainMenuTemplate = [
 // Event Tetiklenmeleri aşağıda yakalanıyor
 
 ipcMain.on("button:click", (err, item) => {
-console.log("button:click event'i tetiklendi")
+  console.log("button:click event'i tetiklendi")
+})
+
+ipcMain.on("openNewTab:click", (err, item) => {
+  console.log("open New Tab")
 })
