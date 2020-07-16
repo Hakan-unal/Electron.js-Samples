@@ -1,5 +1,7 @@
 const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
+const url = require("url");
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -9,8 +11,8 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 650,
+    height: 450,
     webPreferences: {
       nodeIntegration: true
     }
@@ -18,11 +20,21 @@ const createWindow = () => {
 
   });
 
-  // and load the index.html of the app.
+  
+  // and load the index.html of the app. 
+  // Aşağıdaki ile aynı yöntem
+
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
   
 
-
+  // Yukarıdaki ile aynı yöntem
+  /*
+  mainWindow.loadURL(url.format({
+    pathname: path.join(__dirname, "index.html"),
+    protocol: "file",
+    slashes: true
+  }))
+  */
 
 
   // Template üzerinden menu uygulamaya burada import ediliyor
