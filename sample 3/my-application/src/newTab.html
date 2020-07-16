@@ -9,13 +9,17 @@
 </head>
 
 <body>
-    <h1>Hello World</h1>
-
-
+    <div class="container">
+        <div class="h3 text-center text-danger">Yeni sekme</div>
+        <form id="form">
+            <input id="input" type="text" class="input-group" required>
+            <input type="submit" class="btn btn-outline-dark btn-block my-3" value="Gönder">
+        </form>
+    </div>
 
 
     <script>
-        const electron = require("electron");
+        require("./scripts/newTab.js")
     </script>
 </body>
 

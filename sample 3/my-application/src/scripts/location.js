@@ -37,4 +37,5 @@ openNewTabButton.addEventListener("click", () => {
 
 })
 
+
 clearButton.addEventListener("click", clearList);

@@ -3,6 +3,7 @@ const path = require('path');
 const url = require("url");
 const { on } = require('process');
 
+let mainWindow, addWindow;
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -11,7 +12,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 
 const createWindow = () => {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 650,
     height: 450,
     webPreferences: {
@@ -135,4 +136,9 @@ ipcMain.on("button:click", (err, item) => {
 
 ipcMain.on("openNewTab:click", (err, item) => {
   openNewWindow(item);
+})
+
+ipcMain.on("newTabButton:click", (err, item) => {
+  console.log(item)
+  addWindow.close();
 })
