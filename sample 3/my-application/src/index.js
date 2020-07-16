@@ -20,6 +20,7 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+  
 
 
 
@@ -93,10 +94,10 @@ const mainMenuTemplate = [
 
 // Event Tetiklenmeleri aşağıda yakalanıyor
 
-ipcMain.on("button:click", (err, item) => {
+ipcMain.on("button:click", (item) => {
   console.log("button:click event'i tetiklendi")
 })
 
-ipcMain.on("openNewTab:click", (err, item) => {
+ipcMain.on("openNewTab:click", () => {
   console.log("open New Tab")
 })

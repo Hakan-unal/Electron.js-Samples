@@ -31,10 +31,9 @@ button.addEventListener("click", (event) => {
     inputBox.value = "";
 })
 
-openNewTabButton.addEventListener("click", (event) => {
+openNewTabButton.addEventListener("click", () => {
     ipcRenderer.send("openNewTab:click");
 
-    event.preventDefault();
 })
 
 clearButton.addEventListener("click", clearList);
