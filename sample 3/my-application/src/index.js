@@ -52,8 +52,11 @@ const createWindow = () => {
 
 const openNewWindow = (item) => {
   addWindow = new BrowserWindow({
-    width: 480,
-    height: 250,
+    width: 550,
+    height: 225,
+    webPreferences: {
+      nodeIntegration: true
+    },
     title: item
   });
   addWindow.loadFile(path.join(__dirname, 'newTab.html'));
