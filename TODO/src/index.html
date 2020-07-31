@@ -1,69 +1,86 @@
-<!doctype html>
 <html lang="en">
 
 <head>
-  <!-- Required meta tags -->
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-    integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-  <!-- Optional CSS -->
-  <link rel="stylesheet" href="../src/assets/index.css">
+    <title>To Do List</title>
 
-  <title>TODO Application</title>
 </head>
 
 <body>
 
 
-  <nav class="navbar navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">
-      TODO
-    </a>
-    <form id="form" class="form-inline">
-      <div class="form-group mx-sm-3 mx-2 mb-2">
-        <input type="text" class="form-control form-control-lg" id="inputBox" placeholder="Please enter TODO" required>
-      </div>
-      <button type="submit" class="btn btn-outline-light mb-2 btn-lg">Ekle</button>
-    </form>
-  </nav>
+    <div class="row mb-3">
+        <div class="card col border-0">
+            <div class="card-body">
+                <div class="card-title text-center h4">Add Work to The To-Do List </div>
+                <div class="card-text">
+                    <ul class="list-group">
 
-  <div class="container my-3">
-    <div id="todoList" class="list-group">
-      <div class="list-group ">
-        <button type="button" class="list-group-item list-group-item-action bg-dark text-light d-flex justify-content-between">
-          <span id="elementId" class="mx-2">1</span>
-          <span id="description" class="mx-2">description asjkdhajkfhadghadjghsdkjga jhdsfghsgfsdgfh dsghj sdhfg sdfg hdsfg hjdgf hjdsgf hjsgf hjdsghj sgfh sgfh sdgfh sdggj sdghj dfdh dfhgjk dhgjk dfhg jkdhgjk dfhgk </span>
-          <span id="date" class="mx-2">tarih</span>
-          <span id="delete" class="mx-2">*</span>
-        </button>
+                        <li class="list-group-item">
+                            <input id="workName" type="text" class="form-control" placeholder="Enter a Work Name">
+                        </li>
 
-      </div>
-  </div>
+                        <li class="list-group-item">
+                            <textarea class="form-control" id="textArea" placeholder="Additional info"
+                                rows="3"></textarea> </li>
+
+                        <li class="list-group-item">
+                            <div class="row">
+                                <span class="col-sm-12 col-md-6 mt-2"> Starting Date: <input id="startDate" type="date">
+                                </span>
+                                <span class="col-sm-12 col-md-6 mt-2"> Due Date: <input id="finishDate" type="date">
+                                </span>
+                            </div>
+                        </li>
+
+                        <li class="list-group-item">
+                            <input class="btn btn-block btn-outline-dark" id="button" type="button" class="form-control"
+                                value="Submit">
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row" id="row"></div>
 
 
 
 
 
 
-  <!-- Optional JavaScript -->
-  <script src="assets/index.js"></script>
-
-  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-    integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-    crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-    crossorigin="anonymous"></script>
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <script language="javaScript" type="text/javaScript" src="./assets/index.js"></script>
+
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script language="javaScript" type="text/javaScript" src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script language="javaScript" type="text/javaScript"
+        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script language="javaScript" type="text/javaScript"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

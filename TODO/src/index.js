@@ -1,5 +1,48 @@
-const { app, BrowserWindow,ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Menu } = require('electron');
 const path = require('path');
+
+
+// Create Menu
+const mainMenuTemplate = [
+  {
+    label: "Dosya",
+    submenu: [
+
+      {
+        label: "Çıkış",
+        accelerator: process.platform == "darwin" ? "Command+Q" : "Ctrl+Q",
+        role: "quit"
+      }
+    ]
+  },
+]
+if (process.platform == "darwin") {
+  mainMenuTemplate.unshift({
+    label: app.getName(),
+    role: "TODO"
+  })
+}
+if (process.env.NODE_ENV !== "production") {
+  mainMenuTemplate.push(
+    {
+      label: "Dev Tools",
+      submenu: [
+        {
+          label: "Geliştirici Penceresini Aç",
+          click(item, focusedWindow) {
+            focusedWindow.toggleDevTools();
+          }
+        },
+        {
+          label: "Yenile",
+          role: "reload"
+        }
+      ]
+    }
+  )
+}
+
+
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -7,6 +50,10 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 }
 
 const createWindow = () => {
+
+  const mainMenu = Menu.buildFromTemplate(mainMenuTemplate);
+  Menu.setApplicationMenu(mainMenu);
+
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
@@ -15,7 +62,11 @@ const createWindow = () => {
       nodeIntegration: true
     }
 
+
   });
+
+
+
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
