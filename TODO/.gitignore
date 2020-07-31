@@ -1,3 +1,9 @@
+#release-builds
+linux/
+mac/
+windows/
+
+
 # Logs
 logs
 *.log
